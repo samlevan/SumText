@@ -1,0 +1,16 @@
+{
+  "name": "SumText",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Sum numbers between brakets found in the clipboard (eg. \"Buy milk [0.5h], Cook dinner [1h]\" returns \"1.5\"). Right click to show the context menu and click \"Sum numbers from clipboard\" to run. Example of a use case: compute an effort estimate.",
+  "homepage_url": "https://github.com/samlevan",
+  "default_locale": "en",
+  "background": {
+    "page": "src/bg/background.html",
+    "persistent": true
+  },
+  "permissions": [
+    "clipboardRead",
+    "contextMenus"
+  ]
+}
