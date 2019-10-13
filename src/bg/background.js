@@ -9,29 +9,31 @@ function getTextFromClipboard() {
 }
 
 function sum_within_text(text) {
-  return text
-    .split('[')
-      .join('[~!@#$%)(*&^')
-    .split(']')
-      .join('](*&^%~!@#$)')
-    .split('[')
-    .map(function(value) {
-      // console.log(value)
-      const start = value.indexOf('~!@#$%)(*&^')
-      const end = value.indexOf('](*&^%~!@#$)')
-      if (start > -1 && end > -1) {
-        return value
-          .substring(start + 11, end)
-          .replace(/[^\d.-]/g, '')
-      }
-    })
-    .reduce(function(accumulator, currentValue) {
-      if (typeof currentValue !== 'undefined' && !isNaN(parseFloat(currentValue)) ) {
-          // console.log('y', accumulator + parseFloat(currentValue))
-          return accumulator + parseFloat(currentValue)
-      }
-      return Math.round(accumulator*10)/10
-    }, 0)
+  return Math.round(
+      text
+      .split('[')
+        .join('[~!@#$%)(*&^')
+      .split(']')
+        .join('](*&^%~!@#$)')
+      .split('[')
+      .map(function(value) {
+        // console.log(value)
+        const start = value.indexOf('~!@#$%)(*&^')
+        const end = value.indexOf('](*&^%~!@#$)')
+        if (start > -1 && end > -1) {
+          return value
+            .substring(start + 11, end)
+            .replace(/[^\d.-]/g, '')
+        }
+      })
+      .reduce(function(accumulator, currentValue) {
+        if (typeof currentValue !== 'undefined' && !isNaN(parseFloat(currentValue)) ) {
+            // console.log('y', accumulator + parseFloat(currentValue))
+            return accumulator + parseFloat(currentValue)
+        }
+        return accumulator
+      }, 0)
+      * 100) / 100
 }
 
 
